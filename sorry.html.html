@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM SORRY 💗</title>
+
+<style>
+  /* =========================================================
+     ===============  BAGIAN WARNA & FONT  =====================
+     Kalau mau ganti warna tema, ubah nilai di sini aja
+     ========================================================= */
+  :root{
+    --pink-muda: #ffd6e8;
+    --pink-tua: #ff8fb1;
+    --ungu: #b497ff;
+    --krem: #fff7f2;
+    --teks: #6b4a5c;
+    --putih: #ffffff;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--pink-muda), var(--ungu));
+    background-size: 200% 200%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    color: var(--teks);
+    text-align: center;
+    padding: 20px;
+  }
+
+  @keyframes gradientMove{
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* =========================================================
+     ===============  KOTAK UTAMA  =============================
+     ========================================================= */
+  .card{
+    background: var(--krem);
+    border-radius: 30px;
+    padding: 40px 30px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(255, 140, 170, 0.4);
+    position: relative;
+    z-index: 2;
+    animation: popIn 0.8s ease;
+  }
+
+  @keyframes popIn{
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  /* =========================================================
+     ===============  JUDUL  ====================================
+     Ganti teks judul di bagian HTML di bawah ya
+     ========================================================= */
+  .judul{
+    font-size: 2rem;
+    color: var(--pink-tua);
+    margin-bottom: 10px;
+  }
+
+  .subjudul{
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--teks);
+  }
+
+  /* =========================================================
+     ===============  FOTO  =====================================
+     Ganti src gambar di bagian HTML (cari tulisan FOTO KAMU)
+     ========================================================= */
+  .foto-wrapper{
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid var(--pink-tua);
+    box-shadow: 0 0 25px rgba(255,143,177,0.6);
+    animation: floatFoto 3s ease-in-out infinite;
+  }
+
+  .foto-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @keyframes floatFoto{
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  /* =========================================================
+     ===============  TEKS PESAN  ===============================
+     ========================================================= */
+  .pesan{
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    background: var(--putih);
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: inset 0 0 10px rgba(255,182,193,0.4);
+  }
+
+  /* =========================================================
+     ===============  TOMBOL  ===================================
+     ========================================================= */
+  .tombol-area{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  button{
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-maafkan{
+    background: var(--pink-tua);
+    color: var(--putih);
+    box-shadow: 0 6px 15px rgba(255,143,177,0.5);
+  }
+
+  .btn-maafkan:hover{
+    transform: scale(1.08);
+  }
+
+  .btn-belum{
+    background: var(--putih);
+    color: var(--pink-tua);
+    border: 2px solid var(--pink-tua);
+  }
+
+  /* =========================================================
+     ===============  PESAN SETELAH DIMAAFKAN  ==================
+     ========================================================= */
+  .hasil{
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--pink-tua);
+    font-weight: bold;
+    display: none;
+  }
+
+  .hasil.tampil{
+    display: block;
+    animation: popIn 0.6s ease;
+  }
+
+  /* =========================================================
+     ===============  HATI BERTERBANGAN  ========================
+     ========================================================= */
+  .hati{
+    position: fixed;
+    top: 100%;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: terbang linear forwards;
+    z-index: 1;
+  }
+
+  @keyframes terbang{
+    to{
+      transform: translateY(-110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* =========================================================
+     ===============  TOMBOL MUSIK  =============================
+     ========================================================= */
+  .musik-btn{
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--putih);
+    border: 2px solid var(--pink-tua);
+    color: var(--pink-tua);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  /* tampilan kalau tombol "belum maafkan" sudah diklik beberapa kali */
+  .pesan-tambahan{
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: var(--ungu);
+    font-weight: bold;
+    min-height: 24px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- =========================================================
+       TOMBOL MUSIK (klik untuk play/pause)
+       ========================================================= -->
+  <button class="musik-btn" id="musikBtn" title="Putar musik">🔇</button>
+
+  <!-- =========================================================
+       AUDIO - GANTI "musik.mp3" dengan nama file musik kamu
+       Letakkan file musik di folder yang sama dengan file HTML ini
+       ========================================================= -->
+  <audio id="musikLatar" loop>
+    <source src="PONCHET - พี่ชอบหนูที่สุดเลย I Like You The Most ft.VARINZ【Official MV】.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <!-- =========================================================
+         GANTI TEKS JUDUL & SUBJUDUL DI SINI
+         ========================================================= -->
+    <h1 class="judul">I'm Sorry na darling💕</h1>
+    <p class="subjudul">There is something I want to say from the heart...</p>
+
+    <!-- =========================================================
+         FOTO KAMU - ganti "foto.jpg" dengan nama file foto kamu
+         Letakkan file foto di folder yang sama dengan file HTML ini
+         ========================================================= -->
+    <div class="foto-wrapper">
+      <img src="WhatsApp Image 2026-06-14 at 02.01.39.jpeg" alt="us">
+    </div>
+
+    <!-- =========================================================
+         GANTI ISI PESAN PERMINTAAN MAAF DI SINI
+         ========================================================= -->
+    <div class="pesan">
+      I know I was wrong, and I'm so sorry .
+I'm broke when seeing you sad, especially because of me.
+Will you forgive me and give me another chance? 
+    </div>
+
+    <div class="tombol-area">
+      <button class="btn-maafkan" id="btnMaaf">ฉันให้อภัยคุณ 💖</button>
+      <button class="btn-belum" id="btnBelum">ไม่สามารถ 😤</button>
+      <p class="pesan-tambahan" id="pesanTambahan"></p>
+    </div>
+
+    <div class="hasil" id="hasil">
+      เย้! ขอบคุณที่ให้อภัยฉันนะคะ <br>
+      ฉันรักคุณ! 💞
+    </div>
+  </div>
+
+<script>
+  /* =========================================================
+     ===============  HATI BERTERBANGAN  ========================
+     Bikin emoji hati muncul terus-menerus dari bawah ke atas
+     ========================================================= */
+  function buatHati(){
+    const hati = document.createElement('div');
+    hati.classList.add('hati');
+    hati.textContent = ['💖','💕','💗','💓','🌸'][Math.floor(Math.random()*5)];
+    hati.style.left = Math.random() * 100 + 'vw';
+    hati.style.animationDuration = (4 + Math.random() * 3) + 's';
+    hati.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    document.body.appendChild(hati);
+
+    // hapus elemen setelah animasi selesai biar gak menumpuk
+    setTimeout(() => hati.remove(), 8000);
+  }
+  setInterval(buatHati, 400);
+
+
+  /* =========================================================
+     ===============  TOMBOL "AKU MAAFKAN KAMU"  ================
+     ========================================================= */
+  const btnMaaf = document.getElementById('btnMaaf');
+  const hasil = document.getElementById('hasil');
+  const btnBelum = document.getElementById('btnBelum');
+  const pesanTambahan = document.getElementById('pesanTambahan');
+
+  btnMaaf.addEventListener('click', () => {
+    hasil.classList.add('tampil');
+    btnMaaf.style.display = 'none';
+    btnBelum.style.display = 'none';
+    pesanTambahan.textContent = '';
+  });
+
+  /* =========================================================
+     ===============  TOMBOL "BELUM BISA"  ======================
+     Tombol ini "lari" / berubah teks tiap kali diklik,
+     biar lucu dan akhirnya bikin tersenyum
+     ========================================================= */
+  const pesanGoda = [
+    "คุณแน่ใจเหรอ? ",
+    "โปรดคิดอีกครั้ง ",
+    " โปรด... 🙏",
+    "ฉันเสียใจจริงๆ",
+    "ฉันขอโทษอย่างสุดซึ้ง ",
+    "ฉันรักคุณสุดหัวใจ "
+  ];
+  let klikBelum = 0;
+
+  btnBelum.addEventListener('click', () => {
+    pesanTambahan.textContent = pesanGoda[klikBelum % pesanGoda.length];
+    klikBelum++;
+
+    // tombol jadi sedikit lebih kecil tiap kali diklik (efek lucu)
+    const skala = Math.max(0.5, 1 - klikBelum * 0.08);
+    btnBelum.style.transform = `scale(${skala})`;
+  });
+
+
+  /* =========================================================
+     ===============  TOMBOL MUSIK  =============================
+     ========================================================= */
+  const musikBtn = document.getElementById('musikBtn');
+  const musik = document.getElementById('musikLatar');
+  let sedangPutar = false;
+
+  musikBtn.addEventListener('click', () => {
+    if (sedangPutar) {
+      musik.pause();
+      musikBtn.textContent = '🔇';
+    } else {
+      musik.play().catch(() => {
+        alert('Musik belum bisa diputar. Pastikan file musik.mp3 sudah ada di folder yang sama!');
+      });
+      musikBtn.textContent = '🔊';
+    }
+    sedangPutar = !sedangPutar;
+  });
+</script>
+
+</body>
+</html>
